@@ -1,4 +1,4 @@
-//
+i//
 //  GMGridView.m
 //  GMGridView
 //
@@ -167,7 +167,7 @@ static const UIViewAnimationOptions kDefaultAnimationOptions = UIViewAnimationOp
         _scrollView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         _scrollView.backgroundColor = [UIColor clearColor];
         _scrollView.delegate = self;
-        [self isnertSubview:_scrollView atIndex:0];
+        [self insertSubview:_scrollView atIndex:0];
         
         _tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapGestureUpdated:)];
         _tapGesture.delegate = self;
