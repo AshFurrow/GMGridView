@@ -167,7 +167,7 @@ static const UIViewAnimationOptions kDefaultAnimationOptions = UIViewAnimationOp
         _scrollView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         _scrollView.backgroundColor = [UIColor clearColor];
         _scrollView.delegate = self;
-        [self addSubview:_scrollView];
+        [self isnertSubview:_scrollView atIndex:0];
         
         _tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapGestureUpdated:)];
         _tapGesture.delegate = self;
@@ -610,7 +610,7 @@ static const UIViewAnimationOptions kDefaultAnimationOptions = UIViewAnimationOp
     
     [_sortMovingItem removeFromSuperview];
     _sortMovingItem.frame = frameInMainView;
-    [self.mainSuperView addSubview:_sortMovingItem];
+    [self.mainSuperView insertSubview:_sortMovingItem atIndex:0];
     
     _sortFuturePosition = _sortMovingItem.tag - kTagOffset;
     _sortMovingItem.tag = 0;
@@ -640,7 +640,7 @@ static const UIViewAnimationOptions kDefaultAnimationOptions = UIViewAnimationOp
     
     [_sortMovingItem removeFromSuperview];
     _sortMovingItem.frame = frameInScroll;
-    [_scrollView addSubview:_sortMovingItem];
+    [_scrollView insertSubview:_sortMovingItem atIndex:0];
     
     CGPoint newOrigin = [self.layoutStrategy originForItemAtPosition:_sortFuturePosition];
     CGRect newFrame = CGRectMake(newOrigin.x, newOrigin.y, _itemSize.width, _itemSize.height);
@@ -918,7 +918,7 @@ static const UIViewAnimationOptions kDefaultAnimationOptions = UIViewAnimationOp
         _transformingItem.frame = self.mainSuperView.bounds;
         _transformingItem.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         _transformingItem.contentView.frame = frameInMainView;
-        [self.mainSuperView addSubview:_transformingItem];
+        [self.mainSuperView insertSubview:_transformingItem atIndex:0];
         [self.mainSuperView bringSubviewToFront:_transformingItem];
         
         _transformingItem.fullSize = [self.transformDelegate GMGridView:self sizeInFullSizeForCell:_transformingItem atIndex:positionTouch];
@@ -1007,7 +1007,7 @@ static const UIViewAnimationOptions kDefaultAnimationOptions = UIViewAnimationOp
                                  [transformingView removeFromSuperview];
                                  transformingView.frame = finalFrameInScroll;
                                  transformingView.contentView.frame = transformingView.bounds;
-                                 [_scrollView addSubview:transformingView];
+                                 [_scrollView insertSubview:transformingView atIndex:0];
                                  
                                  transformingView.fullSizeView = nil;
                                  
@@ -1217,7 +1217,7 @@ static const UIViewAnimationOptions kDefaultAnimationOptions = UIViewAnimationOp
             if (![self cellForItemAtIndex:positionToLoad]) 
             {
                 GMGridViewCell *cell = [self newItemSubViewForPosition:positionToLoad];
-                [_scrollView addSubview:cell];
+                [_scrollView insertSubview:cell atIndex:0];
             }
         }
     }
@@ -1353,7 +1353,7 @@ static const UIViewAnimationOptions kDefaultAnimationOptions = UIViewAnimationOp
     CGPoint origin = [self.layoutStrategy originForItemAtPosition:index];
     cell.frame = CGRectMake(origin.x, origin.y, _itemSize.width, _itemSize.height);
     cell.alpha = 0;
-    [_scrollView addSubview:cell];
+    [_scrollView insertSubview:cell atIndex:0];
     
     currentView.tag = kTagOffset - 1;
     
@@ -1430,7 +1430,7 @@ static const UIViewAnimationOptions kDefaultAnimationOptions = UIViewAnimationOp
             oldView.tag = oldView.tag + 1;
         }
         
-        [_scrollView addSubview:cell];
+        [_scrollView insertSubview:cell atIndex:0];
     }
     
     _numberTotalItems++;
